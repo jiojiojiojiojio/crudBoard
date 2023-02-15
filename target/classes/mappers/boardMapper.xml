@@ -12,8 +12,20 @@
 	order by b_no
 	</select>
 	
+	<!-- 게시글 상세보기 -->
+	<select id="detail" resultType="BoardDTO" parameterType="java.lang.Integer">
+	select b_title, b_content, u_id, b_regdate, b_readcnt
+	from board
+	where b_no=#{b_no} and b_del=0
+	</select>
 	
-	
+	<!-- 댓글 전체 목록  -->
+	<select id="reply_list" resultType="B_replyDTO" parameterType="java.lang.Integer">
+	select u_id, re_content, re_date
+	from b_reply
+	where b_no=#{b_no}
+	order by re_no
+	</select>
 </mapper>
 
 

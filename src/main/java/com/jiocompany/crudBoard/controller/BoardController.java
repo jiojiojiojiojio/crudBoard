@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.jiocompany.crudBoard.board.B_replyDTO;
 import com.jiocompany.crudBoard.board.BoardDTO;
 import com.jiocompany.crudBoard.board.BoardService;
 import com.sun.tools.sjavac.Log;
@@ -57,6 +58,10 @@ public class BoardController {
 		BoardDTO board = service.detail(b_no);
 		model.addAttribute("board", board);
 
+		//댓글 전체 목록
+		List<B_replyDTO> reply_list = service.reply_list(b_no);
+		model.addAttribute("reply_list", reply_list);
+		
 		return "detail";
 	}
 
