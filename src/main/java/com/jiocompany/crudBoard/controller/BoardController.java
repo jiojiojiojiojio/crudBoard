@@ -1,22 +1,39 @@
 package com.jiocompany.crudBoard.controller;
 
+import java.util.List;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
 
+import com.jiocompany.crudBoard.board.BoardDTO;
+import com.jiocompany.crudBoard.board.BoardService;
 import com.sun.tools.sjavac.Log;
 
 @Controller
 public class BoardController {
 	private static final Logger logger = LoggerFactory.getLogger(BoardController.class);
-	// 게시글 리스트 조회
+	
+	@Autowired
+	BoardService service;
+	
+	// 게시글 전체 리스트 조회
 	@RequestMapping(value = "/board", method = RequestMethod.GET)
-	public String board() {
-		logger.info("로그 설정 완료");
+	public ModelAndView board() throws Exception {
+		logger.info("게시판 리스트!!");
+		ModelAndView mav = new ModelAndView();
 		
-		return "board";
+		List<BoardDTO> board = service.board();
+		mav.addObject("board", board);
+		mav.setViewName("board");
+		
+		
+		return mav;
 	}
 
 	// 게시글 작성 이동 폼

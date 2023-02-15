@@ -35,24 +35,15 @@
 						</tr>
 					</thead>
 					<tbody>
+						<c:forEach var="board" items="${board }">
 						<tr>
-							<th scope="row">1</th>
-							<td><a href="board/detail?b_no=${board.b_no}">제목입니다 넌 길이가 어케돼?</td>
-							<td>Otto</td>
-							<td>2023-02-07</td>
-							<td>7</td>
+							<th scope="row">${board.b_no }</th>
+							<td><a href="board/detail?b_no=${board.b_no}">${board.b_title }</td>
+							<td>${board.u_id }</td>
+							<td>${board.b_regdate }</td>
+							<td>${board.b_readcnt }</td>
 						</tr>
-						<tr>
-							<th scope="row">2</th>
-							<td>Jacob</td>
-							<td>Thornton</td>
-							<td>@fat</td>
-						</tr>
-						<tr>
-							<th scope="row">3</th>
-							<td colspan="2">Larry the Bird</td>
-							<td>@twitter</td>
-						</tr>
+						</c:forEach>
 					</tbody>
 				</table>
 
