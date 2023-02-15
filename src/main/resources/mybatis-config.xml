@@ -5,5 +5,6 @@
 <configuration>
  	<typeAliases>
  		<typeAlias alias="BoardDTO" type="com.jiocompany.crudBoard.board.BoardDTO"/>
+ 		<typeAlias alias="B_replyDTO" type="com.jiocompany.crudBoard.board.B_replyDTO"/>
  	</typeAliases>
 </configuration>

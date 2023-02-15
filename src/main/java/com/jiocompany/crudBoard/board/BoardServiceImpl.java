@@ -23,4 +23,10 @@ public class BoardServiceImpl implements BoardService {
 		return dao.detail(b_no);
 	}
 
+	//댓글 전체 목록
+	@Override
+	public List<B_replyDTO> reply_list(int b_no) throws Exception {
+		return dao.reply_list(b_no);
+	}
+
 }

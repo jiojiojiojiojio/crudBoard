@@ -9,4 +9,7 @@ public interface BoardDAO {
 	
 	//게시글 상세보기 
 	public BoardDTO detail(int b_no) throws Exception;
+	
+	//댓글 전체 목록
+	public List<B_replyDTO> reply_list(int b_no) throws Exception;
 }
