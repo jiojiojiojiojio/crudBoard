@@ -17,4 +17,10 @@ public class BoardServiceImpl implements BoardService {
 		return dao.board();
 	}
 
+	//게시글 상세보기 
+	@Override
+	public BoardDTO detail(int b_no) throws Exception {
+		return dao.detail(b_no);
+	}
+
 }
