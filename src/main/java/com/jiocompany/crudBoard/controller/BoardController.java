@@ -7,8 +7,10 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.stereotype.Service;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.jiocompany.crudBoard.board.BoardDTO;
@@ -31,8 +33,7 @@ public class BoardController {
 		List<BoardDTO> board = service.board();
 		mav.addObject("board", board);
 		mav.setViewName("board");
-		
-		
+	
 		return mav;
 	}
 
@@ -52,7 +53,9 @@ public class BoardController {
 
 	// 게시글 상세보기 이동 폼
 	@RequestMapping(value = "board/detail", method = RequestMethod.GET)
-	public String detail() {
+	public String detail(@RequestParam("b_no") int b_no, Model model) throws Exception {
+		BoardDTO board = service.detail(b_no);
+		model.addAttribute("board", board);
 
 		return "detail";
 	}

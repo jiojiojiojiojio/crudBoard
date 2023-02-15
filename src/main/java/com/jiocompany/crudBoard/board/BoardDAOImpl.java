@@ -17,8 +17,13 @@ public class BoardDAOImpl implements BoardDAO {
 	//게시글 전체 리스트 조회
 	@Override
 	public List<BoardDTO> board() throws Exception {
-		// TODO Auto-generated method stub
 		return sqlSession.selectList(namespace + ".board");
+	}
+
+	//게시글 상세보기 
+	@Override
+	public BoardDTO detail(int b_no) throws Exception {
+		return sqlSession.selectOne(namespace+".detail", b_no);
 	}
 
 }

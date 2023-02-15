@@ -12,8 +12,12 @@
 	order by b_no
 	</select>
 	
-	
-	
+	<!-- 게시글 상세보기 -->
+	<select id="detail" resultType="BoardDTO" parameterType="java.lang.Integer">
+	select b_title, b_content, u_id, b_regdate, b_readcnt
+	from board
+	where b_no=#{b_no} and b_del=0
+	</select>
 </mapper>
 
 

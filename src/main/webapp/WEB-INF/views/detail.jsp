@@ -190,14 +190,14 @@
 						<div align="left">
 							
 							<div>
-								<label>제목 : </label><input type="text" name="b_title" style="border: none;" readonly="readonly"/>
+								<label>제목 : </label><input type="text" name="b_title" value="${board.b_title }" style="border: none;" readonly="readonly"/>
 								<hr>
 							</div>
 							<div>
-								<label>작성자 : </label><input type="text" name="b_title" value="김오리" style="border: none;" readonly="readonly"/>
-								<label>작성 시간 : </label><input type="text" name="b_regdate" value="2023-02-08" style="border: none;" readonly="readonly"/>
+								<label>작성자 : </label><input type="text" name="b_title" value="${board.u_id }" style="border: none;" readonly="readonly"/>
+								<label>작성 시간 : </label><input type="text" name="b_regdate" value="${board.b_regdate }" style="border: none;" readonly="readonly"/>
 								<div align="right">
-									<label>조회수 : </label><input type="text" name="b_readcnt" value="7" size="3" style="border: none;" readonly="readonly"/>
+									<label>조회수 : </label><input type="text" name="b_readcnt" value="${board.b_readcnt }" size="3" style="border: none;" readonly="readonly"/>
 								</div>
 								<hr>
 							</div>
@@ -210,7 +210,7 @@
 									<p><img alt="..." src="/resources/img/jio.png"></p>
 								</div> -->
 								
-								<textarea rows="10" cols="130" name="b_content" readonly="readonly">이거는 여기에 벨류해서 값을 넣으면 돼</textarea>
+								<textarea rows="10" cols="130" name="b_content" readonly="readonly">${board.b_content }</textarea>
 								<hr>
 							</div>
 
