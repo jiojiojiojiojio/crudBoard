@@ -1,6 +1,9 @@
 package com.jiocompany.crudBoard.controller;
 
+import java.io.UnsupportedEncodingException;
 import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -41,17 +44,23 @@ public class BoardController {
 	// 게시글 작성 이동 폼
 	@RequestMapping(value = "board/write", method = RequestMethod.GET)
 	public String sel_write() {
-
+		logger.info("게시글 작성!!");
+//		ModelAndView mav = new ModelAndView();
+//		mav.addObject("board", mav);
 		return "write";
 	}
 
 	// 게시글 작성 저장
 	@RequestMapping(value = "board/write", method = RequestMethod.POST)
-	public String sel_write_post() {
-
-		return "write";
+	public String sel_write(BoardDTO boardDTO, HttpServletRequest request) throws Exception {
+		request.setCharacterEncoding("utf-8");
+		logger.info("저장완료!");
+		
+		int r= service.write(boardDTO);
+		
+		return "redirect:/board"; 
 	}
-
+	
 	// 게시글 상세보기 이동 폼
 	@RequestMapping(value = "board/detail", method = RequestMethod.GET)
 	public String detail(@RequestParam("b_no") int b_no, Model model) throws Exception {

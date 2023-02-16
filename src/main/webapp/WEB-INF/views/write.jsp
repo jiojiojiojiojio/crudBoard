@@ -1,6 +1,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<% request.setCharacterEncoding("utf-8"); %>
 <!DOCTYPE html>
 <html lang="en">
 <%@include file="include/head.jsp"%>
@@ -27,32 +28,33 @@
 			<div align="center" style="background-color: #353A3F;">
 				<p style="color: white;">게시글 작성</p>
 			</div><br/>
-
-			<form action="${contextPath}/board/detail?b_no=${board.b_no}"  method="post">
+			
+			
+			<form action="${contextPath}/board/write" method="POST">
 				<div class="card">
 					<div class="card-body">
 						<div align="left">
 							<div>
 								<hr>
-								작성자 : <input type="text" name="u_id" value="작성자" style="border: none;"
+								작성자 : <input type="text" name="u_id" id="u_id" value="kim" style="border: none;"
 									readonly="readonly" /><br />
 								<hr>
 							</div>
 
 							<div>
-								제목 : <input type="text" name="b_title" size="100"
+								제목 : <input type="text" name="b_title" id="b_title" size="100"
 									placeholder="제목을 입력해주세요." /><br />
 								<hr>
 							</div>
 
 							<div>
 								<p>내용</p>
-								<textarea rows="10" cols="130" name="b_content" placeholder="내용을 입력해주세요."></textarea>
+								<textarea rows="10" cols="130" name="b_content" id="b_content" placeholder="내용을 입력해주세요."></textarea>
 								<hr>
 							</div>
 
 							<div class="custom-file">
-								<input type="file" class="custom-file-input" id="customFile" name="b_img"/>
+								<input type="file" class="custom-file-input" name="b_img" id="b_img"/>
 								<label class="custom-file-label" for="customFile">파일선택</label>
 							</div>
 
