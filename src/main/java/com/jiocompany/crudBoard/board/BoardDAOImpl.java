@@ -20,6 +20,12 @@ public class BoardDAOImpl implements BoardDAO {
 		return sqlSession.selectList(namespace + ".board");
 	}
 
+	//게시글 작성
+	@Override
+	public int write(BoardDTO boardDTO) throws Exception {
+		return sqlSession.insert(namespace+".write", boardDTO);
+	}
+
 	//게시글 상세보기 
 	@Override
 	public BoardDTO detail(int b_no) throws Exception {
@@ -31,5 +37,6 @@ public class BoardDAOImpl implements BoardDAO {
 	public List<B_replyDTO> reply_list(int b_no) throws Exception {
 		return sqlSession.selectList(namespace+".reply_list", b_no);
 	}
+
 
 }

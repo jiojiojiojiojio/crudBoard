@@ -5,6 +5,17 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
 	<div class="container">
 		<a class="navbar-brand" href="${contextPath}">Jio Board</a>
+		
+		<div>
+		<c:if test="${user==null }">
+		<a href="${contextPath}/login"> <h3 class="box-title">로그인</h3></a>
+		</c:if>
+		<c:if test="${user!=null }">
+		${user.name }님 환영합니다. <br />
+		<a href="${contextPath}/logout"> <h3 class="box-title">로그아웃</h3></a>
+		</c:if>
+		</div>
+		
 		<button class="navbar-toggler" type="button" data-bs-toggle="collapse"
 			data-bs-target="#navbarSupportedContent"
 			aria-controls="navbarSupportedContent" aria-expanded="false"

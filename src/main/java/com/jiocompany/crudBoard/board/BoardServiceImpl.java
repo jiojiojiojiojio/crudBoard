@@ -16,6 +16,12 @@ public class BoardServiceImpl implements BoardService {
 	public List<BoardDTO> board() throws Exception {
 		return dao.board();
 	}
+	
+	//게시글 작성
+	@Override
+	public int write(BoardDTO boardDTO) throws Exception {
+		return dao.write(boardDTO);
+	}
 
 	//게시글 상세보기 
 	@Override
@@ -28,5 +34,7 @@ public class BoardServiceImpl implements BoardService {
 	public List<B_replyDTO> reply_list(int b_no) throws Exception {
 		return dao.reply_list(b_no);
 	}
+
+
 
 }

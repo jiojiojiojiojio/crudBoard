@@ -12,6 +12,18 @@
 	order by b_no
 	</select>
 	
+	<!-- 게시글 작성 -->
+	<insert id="write" parameterType="BoardDTO">
+	insert into board (b_no, b_title, b_content, u_id, b_regdate, b_readcnt, b_del, b_img) 
+	values (#{b_no}, #{b_title}, #{b_content}, #{u_id}, curdate(), 0, 0, #{b_img});
+	</insert>
+	
+	<!-- 게시글 작성 -->
+	<!-- <insert id="write" parameterType="BoardDTO">
+	insert into board (b_no, b_title, b_content, u_id, b_regdate, b_readcnt, b_del, b_img) 
+	values (#{b_no}, #{b_title}, #{b_content}, #{u_id}, curdate(), 0, 0, #{b_img});
+	</insert> -->
+	
 	<!-- 게시글 상세보기 -->
 	<select id="detail" resultType="BoardDTO" parameterType="java.lang.Integer">
 	select b_title, b_content, u_id, b_regdate, b_readcnt
