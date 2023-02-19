@@ -15,4 +15,8 @@ public interface BoardDAO {
 	
 	//댓글 전체 목록
 	public List<B_replyDTO> reply_list(int b_no) throws Exception;
+	
+	//게시글 수정
+	public int update(BoardDTO boardDTO) throws Exception;
+	
 }

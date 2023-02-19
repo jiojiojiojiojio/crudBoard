@@ -35,6 +35,14 @@ public class BoardServiceImpl implements BoardService {
 		return dao.reply_list(b_no);
 	}
 
+	//게시글 수정
+	@Override
+	public int update(BoardDTO boardDTO) throws Exception {
+		return dao.update(boardDTO);
+	}
+
+	
+
 
 
 }

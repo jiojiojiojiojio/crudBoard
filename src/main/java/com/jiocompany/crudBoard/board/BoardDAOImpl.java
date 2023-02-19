@@ -38,5 +38,14 @@ public class BoardDAOImpl implements BoardDAO {
 		return sqlSession.selectList(namespace+".reply_list", b_no);
 	}
 
+	//게시글 수정
+	@Override
+	public int update(BoardDTO boardDTO) throws Exception {
+		return sqlSession.update(namespace+".update", boardDTO);
+	}
+	
+	
+
+
 
 }

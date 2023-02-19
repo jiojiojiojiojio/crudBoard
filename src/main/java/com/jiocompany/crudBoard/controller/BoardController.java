@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.jiocompany.crudBoard.board.B_replyDTO;
 import com.jiocompany.crudBoard.board.BoardDTO;
@@ -45,8 +46,6 @@ public class BoardController {
 	@RequestMapping(value = "board/write", method = RequestMethod.GET)
 	public String sel_write() {
 		logger.info("게시글 작성!!");
-//		ModelAndView mav = new ModelAndView();
-//		mav.addObject("board", mav);
 		return "write";
 	}
 
@@ -75,17 +74,30 @@ public class BoardController {
 	}
 
 	// 게시글 수정 이동 폼
-	@RequestMapping(value = "board/detail/update", method = RequestMethod.GET)
-	public String update() {
-
+	@RequestMapping(value = "board/update", method = RequestMethod.GET)
+	public String update(@RequestParam("b_no") int b_no, Model model) throws Exception {
+		logger.info("게시글 수정 폼 이동!");
+		
+		BoardDTO board = service.detail(b_no);
+		model.addAttribute("board", board);
+		
 		return "update";
 	}
-
+	
 	// 게시글 수정 저장 폼
-	@RequestMapping(value = "board/detail/update", method = RequestMethod.POST)
-	public String postupdate() {
-
-		return "update";
+	@RequestMapping(value = "board/update", method = RequestMethod.POST)
+	public String update(BoardDTO boardDTO, HttpServletRequest request, RedirectAttributes rttr) throws Exception {
+		logger.info("게시물 수정!!!!!!!");
+		request.setCharacterEncoding("utf-8");
+		int r=service.update(boardDTO);
+		
+		//수정에 성공한다면
+		if(r>0) {
+			rttr.addFlashAttribute("msg", "수정 성공");
+			return "redirect:/board";
+		}
+		//수정 실패시 
+		return "redirect:update?b_no="+boardDTO.getB_no();
 	}
 
 }

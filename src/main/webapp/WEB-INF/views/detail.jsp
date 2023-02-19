@@ -222,7 +222,7 @@
 			<div align="right">
 				<button type="button" class="btn btn-dark"
 					onclick="location.href='${contextPath}/board'">글 목록</button>
-				<button class="btn btn-dark" onclick="location.href='${contextPath}/board/detail/update?b_no=${board.b_no}'" >수정</button>
+				<button class="btn btn-dark" onclick="location.href='${contextPath}/board/update?b_no=${board.b_no}'" >수정</button>
 				<button class="btn btn-dark">삭제</button>
 
 				<!-- 스크랩 버튼 -->
