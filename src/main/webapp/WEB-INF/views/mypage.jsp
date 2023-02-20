@@ -34,23 +34,24 @@
 								src="https://dummyimage.com/700x350/dee2e6/6c757d.jpg" alt="..." name="u_profile"/>
 								<input class="form-control" type="file" name="u_profile" value="${mypageDTO.u_profile }" multiple>
 							</div><br/>
+
+							<!-- ID -->
+							<div class="mb-3 row">
+								<label class="col-sm-2 col-form-label">ID :</label>
+								<div class="col-sm-10">
+									<input type="text" class="form-control-plaintext" id="u_id" value="${mypageDTO.u_id }" readonly="readonly">
+								</div>
+							</div>
 							
 							<!-- 이름 -->
 							<div class="mb-3 row">
 								<label class="col-sm-2 col-form-label">이름 :</label>
 								<div class="col-sm-10">
-									<input type="text" readonly="readonly" class="form-control-plaintext"
-										id="staticEmail" value="kim">
+									<input type="text" class="form-control"
+										id="staticEmail" value="${mypageDTO.u_name }">
 								</div>
 							</div>
 							
-							<!-- ID -->
-							<div class="mb-3 row">
-								<label class="col-sm-2 col-form-label">ID :</label>
-								<div class="col-sm-10">
-									<input type="text" class="form-control" id="u_id" value="${mypageDTO.u_id }">
-								</div>
-							</div>
 							
 							<!-- PW -->
 							<div class="mb-3 row">
