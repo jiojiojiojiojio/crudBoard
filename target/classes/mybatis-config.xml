@@ -4,7 +4,11 @@
   "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
  	<typeAliases>
+ 		<typeAlias alias="UserDTO" type="com.jiocompany.crudBoard.login.UserDTO"/>
+ 		
  		<typeAlias alias="BoardDTO" type="com.jiocompany.crudBoard.board.BoardDTO"/>
  		<typeAlias alias="B_replyDTO" type="com.jiocompany.crudBoard.board.B_replyDTO"/>
+ 		
+ 		<typeAlias alias="MypageDTO" type="com.jiocompany.crudBoard.mypage.MypageDTO"/>
  	</typeAliases>
 </configuration>
