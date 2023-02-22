@@ -81,9 +81,10 @@
 			<div align="right">
 				<button type="button" class="btn btn-dark"
 					onclick="location.href='${contextPath}/board'">글 목록</button>
-				<!-- <button type="button" class="btn btn-secondary">글 목록</button>	 -->
+				<c:if test="${sessionScope.u_id==board.u_id}">
 				<button type="submit" class="btn btn-dark" onclick="location.href='${contextPath}/board/update?b_no='+${board.b_no}">수정</button>
 				<button class="btn btn-danger" onclick="location.href='${contextPath}/board/delete?b_no='+${board.b_no}">삭제</button>
+				</c:if>
 
 				<!-- 스크랩 버튼 -->
 				<form method="post">
