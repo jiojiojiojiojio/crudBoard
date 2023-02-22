@@ -66,6 +66,13 @@ public class LoginController {
 		
 	}
 	
+	//로그아웃
+	@RequestMapping(value="/logout", method = RequestMethod.GET)
+	public String logout(HttpSession session) {
+		session.invalidate();
+		return "redirect:/";
+	}
+	
 //	//개인 로그인 처리 map
 //	@RequestMapping(value="/logincheck", method = RequestMethod.POST)
 //	public String login(@RequestParam Map<String, Object> map, HttpServletRequest request, HttpServletResponse response
