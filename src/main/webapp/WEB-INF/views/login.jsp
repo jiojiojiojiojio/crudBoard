@@ -19,18 +19,18 @@
 	<div align="center">
 
 		<div>
-		<form method="post">
+		<form action="${contextPath}/logincheck" method="post">
 			<table>
 				<tr align="center">
 					<td colspan="6"><h4>로그인</h4></td>		
 				</tr>
 				<tr>
 					<td>ID : </td>
-					<td colspan="3"><input type="text" name="u_id"/></td>
+					<td colspan="3"><input type="text" id="u_id" name="u_id"/></td>
 				</tr>
 				<tr>
 					<td>PW : </td>
-					<td colspan="3"><input type="text" name="u_pw"/></td>	
+					<td colspan="3"><input type="password" id="u_pw" name="u_pw"/></td>	
 					<td colspan="2"><input type="submit" value="로그인"/></td>				
 				</tr>
 				<tr>
@@ -65,3 +65,5 @@
 	<script src="js/scripts.js"></script>
 </body>
 </html>
+
+

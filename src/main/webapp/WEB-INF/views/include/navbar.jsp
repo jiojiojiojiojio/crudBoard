@@ -7,13 +7,15 @@
 		<a class="navbar-brand" href="${contextPath}">Jio Board</a>
 		
 		<div>
-		<c:if test="${user==null }">
-		<a href="${contextPath}/login"> <h3 class="box-title">로그인</h3></a>
-		</c:if>
-		<c:if test="${user!=null }">
-		${user.name }님 환영합니다. <br />
-		<a href="${contextPath}/logout"> <h3 class="box-title">로그아웃</h3></a>
-		</c:if>
+		<c:choose>
+			<c:when test="${sessionScope.u_id==null }">
+			<a href="${contextPath }/login"><label>로그인</label></a>
+			</c:when>
+			<c:when test="${sessionScope.u_id!=null }">
+			<a style="color: white;">${sessionScope.u_id }님 환영합니다. </a>
+			<a href="${contextPath}/logout"> <h3 class="box-title">로그아웃</h3></a>
+			</c:when>		
+		</c:choose>
 		</div>
 		
 		<button class="navbar-toggler" type="button" data-bs-toggle="collapse"
@@ -32,3 +34,7 @@
 		</div>
 	</div>
 </nav>
+
+<script>
+	console.log(sessionScope.u_id)
+</script>
