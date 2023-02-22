@@ -41,6 +41,12 @@ public class BoardServiceImpl implements BoardService {
 		return dao.update(boardDTO);
 	}
 
+	//게시글 삭제
+	@Override
+	public int delete(int b_no) throws Exception {
+		return dao.delete(b_no);
+	}
+
 	
 
 

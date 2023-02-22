@@ -66,20 +66,27 @@ public class BoardController {
 		BoardDTO board = service.detail(b_no);
 		model.addAttribute("board", board);
 
+		logger.info("번호board>>>>>>>"+board);
+
 		//댓글 전체 목록
 		List<B_replyDTO> reply_list = service.reply_list(b_no);
 		model.addAttribute("reply_list", reply_list);
 		
+		
 		return "detail";
 	}
-
-	// 게시글 수정 이동 폼
+	
+	
+	// 게시글 수정 폼 이동 
 	@RequestMapping(value = "board/update", method = RequestMethod.GET)
 	public String update(@RequestParam("b_no") int b_no, Model model) throws Exception {
-		logger.info("게시글 수정 폼 이동!");
-		
+		logger.info("수정폼 이동");
 		BoardDTO board = service.detail(b_no);
 		model.addAttribute("board", board);
+		logger.info("BoardDTO >>>>"+board);
+		
+		model.addAttribute("b_no", b_no);
+		logger.info("bno>>>>>>"+b_no);
 		
 		return "update";
 	}
@@ -98,6 +105,21 @@ public class BoardController {
 		}
 		//수정 실패시 
 		return "redirect:update?b_no="+boardDTO.getB_no();
+	}
+	
+	//게시글 삭제
+	@RequestMapping(value="board/delete", method = RequestMethod.GET)
+	public String delete(@RequestParam("b_no") int b_no, RedirectAttributes rttr) throws Exception {
+		int r=service.delete(b_no);
+		
+		//글 삭제 성공시
+		if(r>0) {
+			rttr.addFlashAttribute("msg", "글 삭제 성공");
+			logger.info("글삭제 성공ㅇㅇㅇ");
+			return "redirect:/board";
+		}
+		//글 삭제 실패시
+		return "redirect:detail?b_no="+b_no;
 	}
 
 }

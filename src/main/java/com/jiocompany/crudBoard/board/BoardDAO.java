@@ -19,4 +19,6 @@ public interface BoardDAO {
 	//게시글 수정
 	public int update(BoardDTO boardDTO) throws Exception;
 	
+	//게시글 삭제
+	public int delete(int b_no) throws Exception;
 }
