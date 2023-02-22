@@ -26,7 +26,7 @@
 						<div class="card-body">
 							<div align="center">
 								<label style="font-size: 15pt;"><b>회원 정보 수정</b></label><hr>
-							</div>
+							</div>							
 							
 							<!-- 프로필 정보 -->
 							<div class="col-lg-5">
@@ -34,30 +34,29 @@
 								src="https://dummyimage.com/700x350/dee2e6/6c757d.jpg" alt="..." name="u_profile"/>
 								<input class="form-control" type="file" name="u_profile" value="${mypageDTO.u_profile }" multiple>
 							</div><br/>
-
-							<!-- ID -->
-							<div class="mb-3 row">
-								<label class="col-sm-2 col-form-label">ID :</label>
-								<div class="col-sm-10">
-									<input type="text" class="form-control-plaintext" id="u_id" value="${mypageDTO.u_id }" readonly="readonly">
-								</div>
-							</div>
 							
 							<!-- 이름 -->
 							<div class="mb-3 row">
 								<label class="col-sm-2 col-form-label">이름 :</label>
 								<div class="col-sm-10">
 									<input type="text" class="form-control"
-										id="staticEmail" value="${mypageDTO.u_name }">
+										name="u_name" id="staticEmail" value="${mypageDTO.u_name }" readonly="readonly">
+								</div>
+							</div>							
+
+							<!-- ID -->
+							<div class="mb-3 row">
+								<label class="col-sm-2 col-form-label">ID :</label>
+								<div class="col-sm-10">
+									<input type="text" class="form-control" name="u_id" id="u_id" value="${mypageDTO.u_id }">
 								</div>
 							</div>
-							
-							
+													
 							<!-- PW -->
 							<div class="mb-3 row">
 								<label class="col-sm-2 col-form-label">PW :</label>
 								<div class="col-sm-10">
-									<input type="password" class="form-control" id="u_pw" value="${mypageDTO.u_pw }">
+									<input type="password" class="form-control" name="u_pw" id="u_pw" value="${mypageDTO.u_pw }">
 								</div>
 							</div>
 							
@@ -75,7 +74,7 @@
 							<div class="mb-3 row">
 								<label class="col-sm-2 col-form-label">전화번호 :</label>
 								<div class="col-sm-10">
-									<input type="text" class="form-control" id="u_number" value="${mypageDTO.u_number }">
+									<input type="text" class="form-control" name="u_number" id="u_number" value="${mypageDTO.u_number }">
 								</div>
 							</div>
 							
@@ -83,7 +82,7 @@
 							<div class="mb-3 row">
 								<label class="col-sm-2 col-form-label">주소 :</label>
 								<div class="col-sm-10">
-									<input type="text" class="form-control" id="u_address" value="${mypageDTO.u_address }">
+									<input type="text" class="form-control" name="u_address" id="u_address" value="${mypageDTO.u_address }">
 								</div>
 							</div>
 						</div>
