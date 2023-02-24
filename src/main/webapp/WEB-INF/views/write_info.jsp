@@ -24,6 +24,10 @@
 	
 	<div class="container" align="center">
 		<div class="row">
+		
+			<c:choose>
+			<c:when test="${sessionScope.u_id!=null }">
+		
 			<div class="col-lg-9">
 				<div align="center">
 					<label style="font-size: 23pt"><b>내가 작성한 글</b></label>
@@ -65,6 +69,25 @@
 			</div>
 				
 			</div>
+			
+			</c:when>
+			
+						<c:when test="${sessionScope.u_id==null }">
+				<div align="center">
+					<span><a style="font-size: 20pt;">회원 정보가 없습니다.</a></span><br />
+					<span><a style="font-size: 20pt;">로그인 또는 회원가입을하고 즐겨보세요^^</a></span><br/><br/>
+					
+					<div align="center">
+					<button type="button" class="btn btn-dark"
+						onclick="location.href='${contextPath}/login'">로그인</button>
+					<button type="button" class="btn btn-dark"
+						onclick="location.href='${contextPath}/register'">회원가입</button>
+					</div>
+				</div>
+				<br />
+			</c:when>
+			
+			</c:choose>
 			
 			<!-- side bar -->
 			<%@ include file="include/mypage_sidebar.jsp"%>
