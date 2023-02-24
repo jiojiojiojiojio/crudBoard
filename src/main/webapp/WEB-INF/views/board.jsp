@@ -4,6 +4,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <%@include file="include/head.jsp"%>
+
 <body>
 	<!-- Responsive navbar-->
 	<%@include file="include/navbar.jsp"%>
@@ -19,8 +20,16 @@
 	<div align="center">
 		<div class="col-lg-11">
 			<div align="right">
+			<c:choose>
+				<c:when test="${sessionScope.u_id==null }">
+				<button type="button" class="btn btn-dark"
+					onclick="location.href='${contextPath}/login'">로그인하고 글을 써보세요^^</button>
+				</c:when>
+				<c:when test="${sessionScope.u_id!=null }">
 				<button type="button" class="btn btn-dark"
 					onclick="location.href='${contextPath}/board/write'">글쓰기</button>
+				</c:when>
+			</c:choose>
 			</div>
 
 			<div align="center">
