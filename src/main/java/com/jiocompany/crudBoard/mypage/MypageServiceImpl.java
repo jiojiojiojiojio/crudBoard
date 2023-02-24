@@ -14,6 +14,12 @@ public class MypageServiceImpl implements MypageService{
 	public MypageDTO mypage(String u_id) throws Exception {
 		return dao.mypage(u_id);
 	}
+
+	//마이페이지 내 정보 수정
+	@Override
+	public int user_info(MypageDTO mypageDTO) throws Exception {
+		return dao.user_info(mypageDTO);
+	}
 	
 	
 }

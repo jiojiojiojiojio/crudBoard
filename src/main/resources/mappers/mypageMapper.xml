@@ -11,6 +11,13 @@
 	where u_id=#{u_id};
 	</select>
 	
+	<!-- 마이페이지 내 정보 수정 -->
+	<update id="user_info" parameterType="MypageDTO">
+	update user
+	set u_pw = #{u_pw}, u_name = #{u_name}, u_number = #{u_number}, u_address = #{u_address}, u_profile = #{u_profile}
+	where u_id=#{u_id}
+	</update>
+	
 </mapper>
 
 

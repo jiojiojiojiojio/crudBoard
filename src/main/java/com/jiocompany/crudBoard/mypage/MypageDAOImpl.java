@@ -17,4 +17,10 @@ public class MypageDAOImpl implements MypageDAO{
 	public MypageDTO mypage(String u_id) throws Exception {
 		return sqlSession.selectOne(namespace+".mypage", u_id);
 	}
+
+	//마이페이지 내 정보 수정
+	@Override
+	public int user_info(MypageDTO mypageDTO) throws Exception {
+		return sqlSession.update(namespace+".user_info", mypageDTO);
+	}
 }
