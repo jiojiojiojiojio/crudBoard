@@ -11,6 +11,24 @@
 	where u_id=#{u_id} 
 	and u_pw=#{u_pw}
 	</select>
+	
+	<!-- ID 찾기 -->
+	<select id="find_id_result" parameterType="java.util.Map" resultType="String">
+	select u_id
+	from user
+	where u_name=#{u_name}
+	and u_number=#{u_number}
+	</select>
+	
+	<!-- PW 찾기 -->
+	<select id="find_pw_result" parameterType="java.util.Map" resultType="String">
+	select u_pw
+	from user
+	where u_id=#{u_id}
+	and u_name=#{u_name} 
+	and u_number=#{u_number}
+	</select>
+	
 </mapper>
 
 

@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class LoginServiceImpl implements LoginService {
-	
+
 	@Autowired
 	LoginDAO dao;
 
@@ -17,4 +17,16 @@ public class LoginServiceImpl implements LoginService {
 		return dao.login(map);
 	}
 
+	//ID 찾기
+	@Override
+	public String find_id_result(Map<String, Object> map) {
+		return dao.find_id_result(map);
+	}
+
+	//PW 찾기
+	@Override
+	public String find_pw_result(Map<String, Object> map) {
+		return dao.find_pw_result(map);
+	}
+	
 }

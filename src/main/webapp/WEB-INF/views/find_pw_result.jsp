@@ -38,11 +38,11 @@
     <div class="text-center">                                                               
         <h1 class="h4 text-gray-900 mb-2">Please check your PW</h1><br><br>                 
         <c:choose>                                                                          
-            <c:when test="${empty searchVO}">                                                 
+            <c:when test="${empty returnpw}">                                                 
                 <p class="mb-4">조회결과가 없습니다.</p>                                        
             </c:when>                                                                         
             <c:otherwise>                                                                     
-                <p class="mb-4">${searchVO.me_id}</p>                                              
+                <p class="mb-4">당신의 PW는 '${returnpw}' 입니다.</p>                                              
             </c:otherwise>                                                                    
         </c:choose>                                                                         
     </div>                                                                                  

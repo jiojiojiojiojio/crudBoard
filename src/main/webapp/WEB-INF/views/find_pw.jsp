@@ -26,24 +26,49 @@
                 <div class="col-md-6 login-form-1" align="center">
                     <div><h4>다음 정보를 입력해주세요.</h4></div>
                     
-                    <form action="${contextPath}/login/find_pw/find_pw_result" method="post">
+                    <form id="find_pw" action="${contextPath}/login/find_pw/find_pw_result" method="post">
                     	<div class="form-group">
-                            <input type="text" class="form-control" name="u_id" placeholder="Your ID *"/>
+                            <input type="text" class="form-control" name="u_id" id="u_id" placeholder="Your ID *"/>
                         </div>
                         <div class="form-group">
-                            <input type="text" class="form-control" name="u_name" placeholder="Your Name *"/>
+                            <input type="text" class="form-control" name="u_name" id="u_name" placeholder="Your Name *"/>
                         </div>
                         <div class="form-group">
-                            <input type="password" class="form-control" name="u_number" placeholder="Your Number *" value="" />
+                            <input type="text" class="form-control" name="u_number" id="u_number" placeholder="Your Number *" value="" />
                         </div>
                         <div class="form-group">
-                            <button type="submit" class="btn btn-dark"> 확인 </button>  
+                            <button type="submit" class="btn btn-dark" onclick="pwSubmit"> 확인 </button>  
                         </div>
                         <div class="form-group">
                             <a href="${contextPath}/login/find_id" class="ForgetPwd">Forget ID?</a>
                             <a href="${contextPath}/" class="ForgetPwd">Go Home</a>
                         </div>
                     </form>
+                    
+                    <script>
+                    	function pwSubmit() {
+							var form=document.find_id;
+							
+							if(!form.u_id.value){
+								alert("ID를 입력해주세요.")
+								form.u_id.focus();
+							}			
+							if(!form.u_name.value){
+								alert("이름을 입력해주세요.")
+								form.u_name.focus();
+							return;
+							}
+							if(!form.u_number.value){
+								alert("전화번호를 입력해주세요.")
+								form.u_number.focus();
+							return;
+							}
+							form.method="post";
+							form.action="${contextPath}/login/find_pw/find_pw_result";
+							form.submit();
+						}
+                    </script>
+                    
                 </div>
             </div>
         </div>

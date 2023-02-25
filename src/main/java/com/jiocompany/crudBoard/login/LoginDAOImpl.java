@@ -19,7 +19,18 @@ public class LoginDAOImpl implements LoginDAO{
 	public UserDTO login(Map<String, Object> map) {
 		return sqlSession.selectOne(namespace+".login", map);
 	}
-	
+
+	//ID 찾기
+	@Override
+	public String find_id_result(Map<String, Object> map) {
+		return sqlSession.selectOne(namespace+".find_id_result", map);
+	}
+
+	//PW 찾기
+	@Override
+	public String find_pw_result(Map<String, Object> map) {
+		return sqlSession.selectOne(namespace+".find_pw_result", map);
+	}
 
 
 }
