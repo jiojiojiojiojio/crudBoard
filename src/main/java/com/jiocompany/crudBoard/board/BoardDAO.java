@@ -21,4 +21,9 @@ public interface BoardDAO {
 	
 	//게시글 삭제
 	public int delete(int b_no) throws Exception;
+	
+	//ajax 댓글 목록 불러오기
+	public List<B_replyDTO> replylist(int b_no) throws Exception;
+	
+	
 }

@@ -6,19 +6,90 @@
 <html lang="en">
 <%@include file="include/head.jsp"%>
 
-<!-- 버튼 함수 -->
+<script src="https://code.jquery.com/jquery-3.4.1.js"></script>
 <script>
-	$(function() {
-		//수정 버튼 함수
-		$(".btn-dark").click(function() {
-			location.href="update?b_no=" + ${b_no};
-		});
+	// ajax 댓글 기능
+	$(document).ready(function(){
+		console.log('되엇니?');
+		//댓글 목록 불러오기
+		replylist();
+		
+//		$('#btnReplySave').click(function(){
+//		$('#btnReplySave').on('click',function(){
+		$(document).on('click','#btnReplySave',function(){
+			var re_content = $("#re_content").val();
+			var u_id = $("#u_id").val();
+			
+			var url = "${pageContext.request.contextPath}/board/reply2";  // 아작스 쓰기
+			var paramData = {
+					"u_id" : u_id,
+					"re_content" : re_content,
+					"b_no" : '${board.b_no}'
+			}// 추가데이터 작성하기
+			
+			$.ajax({
+				url : url,
+				data : paramData,
+				dataType : 'json',
+				type : 'POST',
+				success : function(result){
+					replylist();
+					$("#re_content").val('');
+					$("#u_id").val('');
+				},
+				error : function(result){
+					alert('에러가 발생했습니다.');
+				}			
+			});  // ajax end			
+		});  // end of $(document).on('
+	});
+		
+	// 댓글 목록 불러오기 : ajax  -> board/replylist , bno
+	// 자바스크립트 변수선언 : var, let, const
+	function replylist(){
+		var url = "${pageContext.request.contextPath}/board/replylist";
+		var paramData = {
+				"b_no" : "${board.b_no}"
+		};
+		$.ajax({
+			url: url,  // 전송주소  -> controller 매핑주소
+			data : paramData,  // 요청데이터
+			dataType : 'json', //데이터타입
+			type : 'POST', // 전송방식(POST/GET)
+			success : function(result){
+				//alert('성공');
+				//alert(result);
+				var htmls = "";  //문서꾸미기
+				if(result.length < 1){
+					htmls += '<h3>댓글이 없습니다.</h3>';
+				}
+				else{
+					$(result).each(function(){
+						htmls = htmls + '<div class="" id="re_no' +this.re_no + '">';
+                        //<div id="reno12"> <div id="reno13">
+				       htmls += '<span class="d-block">';
+				       htmls += this.re_no + ' - ';
+				       htmls += '<strong class="text-gray-dark">' + this.u_id + '</strong>';
+				       htmls += '<span style="padding-left: 7px; font-size: 9pt">';
+				       htmls += '<a href="javascript:void(0)" onclick="fn_editReply(' + this.re_no + ', \'' + this.u_id + '\', \'' + this.re_content + '\' )" style="padding-right:5px">수정</a>';
+				       htmls += '<a href="javascript:void(0)" onclick="fn_deleteReply(' + this.re_no + ')" >삭제</a>';
+				       htmls += '</span>';
+				       htmls += '</span><br>';
+				       htmls += this.re_content;
+				       htmls += '</p>';
+				       htmls += '</div>';   						
+					});
+				}
 				
-		//삭제 버튼 함수
-		$(".btn-danger").click(function() {
-			location.href="delete?b_no="+${board.b_no};
-		});
+				$("#replylist").html(htmls);  //댓글위치에 html로 보여주기
+			},
+			error : function(result){
+				alert('실패');
 			}
+		});
+		
+	}// end of replylist()	
+
 </script>
 
 <body>
@@ -107,7 +178,7 @@
 					<b><label>댓글 작성</label></b>
 				</div>
 
-				<form action="post">
+				<form role="form" method="post">
 					<table>
 						<tr>
 							<td><input type="text" name="u_id" value="${sessionScope.u_id }" size="10"
@@ -115,7 +186,8 @@
 
 							<td rowspan="2" width="70%"><textarea class="form-control"
 									name="re_content" id="re_content" placeholder="댓글을 입력하세요"></textarea></td>
-
+							
+							<td><input type="hidden" name="b_no"/></td>
 							<td>
 								<button type="submit" class="btn btn-outline-dark"
 									id="btnReplySave">저장</button>
@@ -126,8 +198,10 @@
 				<hr>
 			</div>
 			
+			<div id="replylist" align="left"></div>
+			
 		<!-- 댓글 목록 리스트 start -->
-		<div align="left">
+		<!-- <div align="left">
 			<label><b>댓글 목록</b></label>
 			<table>
 				<form>
@@ -156,7 +230,7 @@
 						</c:forEach>
 					</div>
 			</table>
-		</div>
+		</div> -->
 		<!-- 댓글 목록 리스트 end -->
 			
 		</div>

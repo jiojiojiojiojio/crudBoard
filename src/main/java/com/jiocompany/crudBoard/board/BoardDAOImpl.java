@@ -49,6 +49,14 @@ public class BoardDAOImpl implements BoardDAO {
 	public int delete(int b_no) throws Exception {
 		return sqlSession.delete(namespace+".delete", b_no);
 	}
+
+	//ajax 댓글 목록 불러오기
+	@Override
+	public List<B_replyDTO> replylist(int b_no) throws Exception {
+		return sqlSession.selectList(namespace+".reply_list", b_no);
+	}
+
+	
 	
 	
 

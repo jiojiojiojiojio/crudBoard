@@ -14,6 +14,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -48,7 +49,7 @@ public class BoardController {
 		logger.info("게시글 작성!!");
 		return "write";
 	}
-
+	
 	// 게시글 작성 저장
 	@RequestMapping(value = "board/write", method = RequestMethod.POST)
 	public String sel_write(BoardDTO boardDTO, HttpServletRequest request) throws Exception {
@@ -121,5 +122,12 @@ public class BoardController {
 		//글 삭제 실패시
 		return "redirect:detail?b_no="+b_no;
 	}
-
+	
+	// ajax 댓글 목록 불러오기
+	@ResponseBody
+	@RequestMapping(value="board/replylist", method = RequestMethod.POST)
+	public List<B_replyDTO> replylist(@RequestParam("b_no") int b_no) throws Exception{
+		return service.replylist(b_no);
+	}
+	
 }

@@ -47,6 +47,12 @@ public class BoardServiceImpl implements BoardService {
 		return dao.delete(b_no);
 	}
 
+	//ajax 댓글 목록 불러오기
+	@Override
+	public List<B_replyDTO> replylist(int b_no) throws Exception {
+		return dao.replylist(b_no);
+	}
+
 	
 
 
