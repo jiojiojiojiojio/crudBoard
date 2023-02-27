@@ -139,7 +139,12 @@ public class BoardController {
 	}
 	
 	//ajax 댓글 수정
-	
+	@ResponseBody
+	@RequestMapping(value="board/reply_update", method = RequestMethod.POST)
+	public int reply_update(B_replyDTO b_replyDTO) throws Exception {
+		logger.info("댓글 수정 dto>>"+b_replyDTO);
+		return service.reply_update(b_replyDTO);
+	}
 	
 	//ajax 댓글 삭제
 }

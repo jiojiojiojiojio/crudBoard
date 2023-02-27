@@ -34,7 +34,3 @@
 		</div>
 	</div>
 </nav>
-
-<script>
-	console.log(sessionScope.u_id)
-</script>

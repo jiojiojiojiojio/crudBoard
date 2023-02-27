@@ -44,8 +44,7 @@
 		});  // end of $(document).on('
 	});
 		
-	// 댓글 목록 불러오기 : ajax  -> board/replylist , bno
-	// 자바스크립트 변수선언 : var, let, const
+	// 댓글 목록 불러오기 : ajax  -> board/reply , b_no
 	function replylist(){
 		var url = "${pageContext.request.contextPath}/board/replylist";
 		var paramData = {
@@ -61,7 +60,7 @@
 				//alert(result);
 				var htmls = "";  //문서꾸미기
 				if(result.length < 1){
-					htmls += '<h3>댓글이 없습니다.</h3>';
+					htmls += '<h5>댓글이 없습니다.</h5>';
 				}
 				else{
 					$(result).each(function(){
@@ -89,6 +88,55 @@
 		
 	}// end of replylist()	
 
+	//댓글 수정하기(form)
+	function fn_editReply(re_no, u_id, re_content){
+		
+		   var htmls = "";
+		   htmls = htmls + '<div class="" id="re_no' +re_no + '">';
+	       htmls += '<span class="d-block">';
+	       htmls += re_no + ' - ';
+	       htmls += '<strong class="text-gray-dark">' + u_id + '</strong>';
+	       htmls += '<span style="padding-left: 7px; font-size: 9pt">';
+	       htmls += '<a href="javascript:void(0)" onclick="fn_updateReply(' + re_no + ', \'' + u_id + '\' )" style="padding-right:5px">저장</a>';
+	       htmls += '<a href="javascript:void(0)" onclick="replylist()" >취소</a>';
+	       htmls += '</span>';
+	       htmls += '</span><br>';
+	       htmls += '<textarea id="editmemo" name="editmemo" rows="3">';
+	       htmls += re_content;
+	       htmls += '</textarea>'
+	       htmls += '</p>';
+	       htmls += '</div>';
+	       // 선택한 요소를 다른것으로 바꿉니다.(변경)
+	       $('#re_no'+re_no).replaceWith(htmls);
+	       $('#re_no'+re_no +'#editmemo').focus();
+		}
+		
+		function fn_updateReply(re_no,u_id){
+			var editmemo = $('#editmemo').val();
+			var url = "${pageContext.request.contextPath}/board/reply_update";
+			var paramData = {
+					"re_no" : re_no,
+					"u_id" : '${sessionScope.u_id}',
+					"re_content" : editmemo
+			}; // 수정데이터
+			$.ajax({
+				url : url,
+				data : paramData,
+				dataType : 'json',
+				type : 'POST',
+				success : function(result){
+					console.log(result);
+					replylist();
+				},
+				error : function(result){
+					console.log(result);
+					alert('에러가 발생했습니다.');
+				}
+			});		
+		}
+		
+		
+	
 </script>
 
 <body>

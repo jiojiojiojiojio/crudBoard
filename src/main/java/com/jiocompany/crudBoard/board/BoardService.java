@@ -27,4 +27,9 @@ public interface BoardService {
 	
 	//ajax 댓글 작성
 	public int reply(B_replyDTO b_replyDTO) throws Exception;
+	
+	//ajax 댓글 수정
+	public int reply_update(B_replyDTO b_replyDTO) throws Exception;
+	
+	
 }

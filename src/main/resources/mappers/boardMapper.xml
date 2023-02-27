@@ -58,8 +58,15 @@
 	<!-- ajax 댓글 작성 -->
 	<insert id="reply" parameterType="B_replyDTO">
 	insert into b_reply (u_id, b_no, re_content, re_date) 
-	values (#{u_id}, #{b_no}, #{re_content}, curdate());
+	values (#{u_id}, #{b_no}, #{re_content}, curdate())
 	</insert>
+	
+	<!-- ajax 댓글 수정 -->
+	<update id="reply_update" parameterType="B_replyDTO">
+	update b_reply
+	set u_id=#{u_id} ,re_content = #{re_content}, re_date = curdate()
+	where (re_no = #{re_no});
+	</update>
 	
 </mapper>
 

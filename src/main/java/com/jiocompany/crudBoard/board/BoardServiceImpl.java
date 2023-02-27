@@ -59,6 +59,12 @@ public class BoardServiceImpl implements BoardService {
 		return dao.reply(b_replyDTO);
 	}
 
+	//ajax 댓글 수정
+	@Override
+	public int reply_update(B_replyDTO b_replyDTO) throws Exception {
+		return dao.reply_update(b_replyDTO);
+	}
+
 	
 
 
