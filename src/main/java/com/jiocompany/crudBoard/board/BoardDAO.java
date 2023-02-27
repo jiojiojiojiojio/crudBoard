@@ -32,4 +32,5 @@ public interface BoardDAO {
 	public int reply_update(B_replyDTO b_replyDTO) throws Exception;
 	
 	//ajax 댓글 삭제
+	public int reply_delete(int re_no) throws Exception;
 }

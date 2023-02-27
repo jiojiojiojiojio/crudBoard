@@ -56,8 +56,6 @@
 			dataType : 'json', //데이터타입
 			type : 'POST', // 전송방식(POST/GET)
 			success : function(result){
-				//alert('성공');
-				//alert(result);
 				var htmls = "";  //문서꾸미기
 				if(result.length < 1){
 					htmls += '<h5>댓글이 없습니다.</h5>';
@@ -111,6 +109,7 @@
 	       $('#re_no'+re_no +'#editmemo').focus();
 		}
 		
+		//ajax 댓글 수정
 		function fn_updateReply(re_no,u_id){
 			var editmemo = $('#editmemo').val();
 			var url = "${pageContext.request.contextPath}/board/reply_update";
@@ -135,6 +134,28 @@
 			});		
 		}
 		
+		//ajax댓글 삭제
+		function fn_deleteReply(re_no) {
+			var url = "${pageContext.request.contextPath}/board/reply_delete";
+			var paramData = {
+					"re_no" : re_no
+			};
+			
+			$.ajax({
+				url : url,
+				data : paramData,
+				dataType : 'json',
+				type : 'POST',
+				success : function(result){
+					console.log(result);
+					replylist();
+				},
+				error : function(result){
+					console.log(data);
+					alert("에러발생");
+				}
+			});
+		}
 		
 	
 </script>

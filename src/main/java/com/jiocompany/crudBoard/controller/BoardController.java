@@ -147,4 +147,10 @@ public class BoardController {
 	}
 	
 	//ajax 댓글 삭제
+	@ResponseBody
+	@RequestMapping(value="board/reply_delete", method = RequestMethod.POST)
+	public int reply_delete(@RequestParam("re_no") int re_no) throws Exception {
+		logger.info("댓글 삭제할reno>>>"+re_no);
+		return service.reply_delete(re_no);
+	}
 }

@@ -68,6 +68,12 @@ public class BoardDAOImpl implements BoardDAO {
 		return sqlSession.update(namespace+".reply_update", b_replyDTO);
 	}
 
+	//ajax 댓글 삭제
+	@Override
+	public int reply_delete(int re_no) throws Exception {
+		return sqlSession.delete(namespace+".reply_delete", re_no);
+	}
+
 	
 	
 	

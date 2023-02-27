@@ -68,6 +68,13 @@
 	where (re_no = #{re_no});
 	</update>
 	
+	<!-- ajax 댓글 삭제 -->
+	<delete id="reply_delete" parameterType="java.lang.Integer">
+	delete 
+	from b_reply
+	where re_no=#{re_no} 
+	</delete>
+	
 </mapper>
 
 
