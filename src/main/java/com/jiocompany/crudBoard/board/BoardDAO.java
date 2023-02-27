@@ -33,4 +33,7 @@ public interface BoardDAO {
 	
 	//ajax 댓글 삭제
 	public int reply_delete(int re_no) throws Exception;
+	
+	//게시글 조회 수 증가
+	public int b_readcnt(int b_no) throws Exception;
 }

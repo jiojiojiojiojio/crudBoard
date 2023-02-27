@@ -71,6 +71,12 @@ public class BoardServiceImpl implements BoardService {
 		return dao.reply_delete(re_no);
 	}
 
+	//게시글 조회 수 증가
+	@Override
+	public int b_readcnt(int b_no) throws Exception {
+		return dao.b_readcnt(b_no);
+	}
+
 	
 
 

@@ -73,6 +73,10 @@ public class BoardController {
 		List<B_replyDTO> reply_list = service.reply_list(b_no);
 		model.addAttribute("reply_list", reply_list);
 		
+		//게시글 조회 수 증가
+		int b_readcnt=0;
+		service.b_readcnt(b_no);
+		model.addAttribute("b_readcnt", b_readcnt);
 		
 		return "detail";
 	}

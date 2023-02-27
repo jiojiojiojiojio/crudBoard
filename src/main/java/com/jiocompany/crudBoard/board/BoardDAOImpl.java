@@ -74,6 +74,12 @@ public class BoardDAOImpl implements BoardDAO {
 		return sqlSession.delete(namespace+".reply_delete", re_no);
 	}
 
+	//게시글 조회 수 증가
+	@Override
+	public int b_readcnt(int b_no) throws Exception {
+		return sqlSession.update(namespace+".b_readcnt", b_no);
+	}
+
 	
 	
 	
