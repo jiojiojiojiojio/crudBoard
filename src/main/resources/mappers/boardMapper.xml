@@ -55,6 +55,11 @@
 	order by re_no
 	</select>
 	
+	<!-- ajax 댓글 작성 -->
+	<insert id="reply" parameterType="B_replyDTO">
+	insert into b_reply (u_id, b_no, re_content, re_date) 
+	values (#{u_id}, #{b_no}, #{re_content}, curdate());
+	</insert>
 	
 </mapper>
 

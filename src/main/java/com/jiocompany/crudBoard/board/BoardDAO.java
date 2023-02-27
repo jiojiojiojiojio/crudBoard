@@ -25,5 +25,11 @@ public interface BoardDAO {
 	//ajax 댓글 목록 불러오기
 	public List<B_replyDTO> replylist(int b_no) throws Exception;
 	
+	//ajax 댓글 작성
+	public int reply(B_replyDTO b_replyDTO) throws Exception;
 	
+	//ajax 댓글 수정
+	
+	
+	//ajax 댓글 삭제
 }

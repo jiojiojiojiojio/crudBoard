@@ -130,4 +130,16 @@ public class BoardController {
 		return service.replylist(b_no);
 	}
 	
+	//ajax 댓글 작성
+	@ResponseBody
+	@RequestMapping(value="board/reply", method = RequestMethod.POST)
+	public int reply(B_replyDTO b_replyDTO) throws Exception {
+		logger.info("breplydto>>"+b_replyDTO);
+		return service.reply(b_replyDTO);
+	}
+	
+	//ajax 댓글 수정
+	
+	
+	//ajax 댓글 삭제
 }

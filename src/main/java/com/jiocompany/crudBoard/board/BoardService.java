@@ -25,5 +25,6 @@ public interface BoardService {
 	//ajax 댓글 목록 불러오기
 	public List<B_replyDTO> replylist(int b_no) throws Exception;
 	
-	
+	//ajax 댓글 작성
+	public int reply(B_replyDTO b_replyDTO) throws Exception;
 }

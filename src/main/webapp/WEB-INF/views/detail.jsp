@@ -20,9 +20,9 @@
 			var re_content = $("#re_content").val();
 			var u_id = $("#u_id").val();
 			
-			var url = "${pageContext.request.contextPath}/board/reply2";  // 아작스 쓰기
+			var url = "${pageContext.request.contextPath}/board/reply";  // ajax 쓰기
 			var paramData = {
-					"u_id" : u_id,
+					"u_id" : '${sessionScope.u_id}',
 					"re_content" : re_content,
 					"b_no" : '${board.b_no}'
 			}// 추가데이터 작성하기
@@ -66,7 +66,6 @@
 				else{
 					$(result).each(function(){
 						htmls = htmls + '<div class="" id="re_no' +this.re_no + '">';
-                        //<div id="reno12"> <div id="reno13">
 				       htmls += '<span class="d-block">';
 				       htmls += this.re_no + ' - ';
 				       htmls += '<strong class="text-gray-dark">' + this.u_id + '</strong>';
@@ -178,7 +177,6 @@
 					<b><label>댓글 작성</label></b>
 				</div>
 
-				<form role="form" method="post">
 					<table>
 						<tr>
 							<td><input type="text" name="u_id" value="${sessionScope.u_id }" size="10"
@@ -189,12 +187,10 @@
 							
 							<td><input type="hidden" name="b_no"/></td>
 							<td>
-								<button type="submit" class="btn btn-outline-dark"
-									id="btnReplySave">저장</button>
+								<button type="button" id="btnReplySave">저장</button>
 							</td>
 						</tr>
 					</table>
-				</form>
 				<hr>
 			</div>
 			
