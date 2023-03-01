@@ -77,8 +77,10 @@ public class BoardServiceImpl implements BoardService {
 		return dao.b_readcnt(b_no);
 	}
 
+	//게시글 검색
+	@Override
+	public List<BoardDTO> boardSearch(BoardDTO boardDTO) throws Exception {
+		return dao.boardSearch(boardDTO);
+	}
 	
-
-
-
 }

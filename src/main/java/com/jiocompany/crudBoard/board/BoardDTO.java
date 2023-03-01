@@ -12,5 +12,9 @@ public class BoardDTO {
 	private int b_readcnt;
 	private int b_del;
 	private String b_img;
+	
+	//검색을 위한 DTO
+	private String type;
+	private String keyword;
 
 }

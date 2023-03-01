@@ -6,12 +6,13 @@
 <table class="table">
 	<form>
 		<div class="form-group1">
+	<c:forEach var="reply_list" items="${reply_list }">
 	<tr>
-		<td>작성자 : 김오리 작성일자 : 2023-02-09</td>
+		<td>작성자 : ${reply_list.u_id } 작성일자 : ${reply_list.re_date }</td>
 	</tr>
 	<tr>
 		<td><textarea name="re_content" rows="5" cols="40"
-				readonly="readonly" class="form-control1">${boardReply.rememo}</textarea>
+				readonly="readonly" class="form-control1">${reply_list.re_content}</textarea>
 		</td>
 		<td><a href="#">댓글수정</a>
 		<td><a href="#">댓글삭제</a> <script>
@@ -24,6 +25,7 @@
 			})		
 			</script></td>
 	</tr>
+	</c:forEach>
 	</div>
 </table>
 

@@ -157,4 +157,26 @@ public class BoardController {
 		logger.info("댓글 삭제할reno>>>"+re_no);
 		return service.reply_delete(re_no);
 	}
+	
+	//게시글 검색
+	@RequestMapping(value = "/board", method = RequestMethod.POST)
+	public ModelAndView boardSearch(@RequestParam("type")String type,
+			@RequestParam("keyword") String keyword, Model model) throws Exception{
+		logger.info("검색");
+		
+		ModelAndView mav = new ModelAndView();
+		
+		BoardDTO boardDTO = new BoardDTO();
+		boardDTO.setType(type);
+		boardDTO.setKeyword(keyword);
+		logger.info("타입>>"+type+"/ 키워드>>"+keyword);
+		
+		List<BoardDTO> board = service.boardSearch(boardDTO);
+		mav.addObject("board", board);
+		mav.setViewName("board");
+		
+		return mav;
+	}
+	
+	
 }

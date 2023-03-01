@@ -64,16 +64,19 @@
 		<!-- 검색 시작 -->
 		<div>
 			<form action="${contextPath}/board" method="POST">
-				<input type="text" name="s_name" value=""></input>
+				<select name="type">
+					<option selected value="">검색 내용 선택</option>
+					<option value="b_title">제목</option>
+					<option value="b_content">내용</option>
+					<option value="u_id">작성자</option>
+				</select>
+				
+				<input type="text" name="keyword" value=""></input>
 				<button type="submit" class="btn btn-secondary">검색</button>
 			</form>
 		</div>
 		<!-- 끝 -->
 	</div>
-
-
-
-
 
 	<!-- Footer-->
 	<%@include file="include/footer.jsp"%>

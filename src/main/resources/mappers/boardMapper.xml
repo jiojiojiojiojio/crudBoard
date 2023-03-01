@@ -5,7 +5,7 @@
 <mapper namespace = "com.jiocompany.crudBoard.boardMapper">
 	
 	<!-- 글 전체 목록 -->
-	<select id="board" resultType="BoardDTO">
+	<select id="board" resultType="BoardDTO" parameterType="BoardDTO">
 	select *
 	from board
 	where b_del = 0 
@@ -81,6 +81,24 @@
 	set b_readcnt = b_readcnt + 1 
 	where b_no = #{b_no}
 	</update>
+	
+	<!-- 게시글 검색(검색 후 페이지) -->
+	<select id="boardSearch" parameterType="BoardDTO" resultType="BoardDTO">
+	select *
+	from board
+	where b_del=0
+	<choose>
+		<when test='type != null and type == "b_title"'>
+			and b_title like CONCAT('%', #{keyword}, '%')
+		</when>
+		<when test='type != null and type.equals("b_content")'>
+			and b_content like CONCAT('%', #{keyword}, '%')
+		</when>
+		<when test='type != null and type.equals("u_id")'>
+			and u_id = #{keyword}
+		</when>
+	</choose>
+	</select> 
 	
 </mapper>
 
