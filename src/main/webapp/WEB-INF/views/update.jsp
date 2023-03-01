@@ -34,7 +34,7 @@
 						<div align="left">
 							<div>
 								<hr>
-								작성자 : <input type="text" name="u_id" value="kim" style="border: none;"
+								작성자 : <input type="text" name="u_id" value="${board.u_id }" style="border: none;"
 									readonly="readonly" /><br />
 								<hr>
 							</div>
