@@ -36,4 +36,8 @@ public interface BoardDAO {
 	
 	//게시글 조회 수 증가
 	public int b_readcnt(int b_no) throws Exception;
+
+	//게시글 검색
+	public List<BoardDTO> boardSearch(BoardDTO boardDTO) throws Exception;
+	
 }

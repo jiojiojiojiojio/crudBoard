@@ -80,10 +80,10 @@ public class BoardDAOImpl implements BoardDAO {
 		return sqlSession.update(namespace+".b_readcnt", b_no);
 	}
 
+	//게시글 검색
+	@Override
+	public List<BoardDTO> boardSearch(BoardDTO boardDTO) throws Exception {
+		return sqlSession.selectList(namespace+".boardSearch", boardDTO);
+	}
 	
-	
-	
-
-
-
 }
