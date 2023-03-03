@@ -13,7 +13,10 @@
 
 <h3>프로젝트 문서화 작업</h3>
 테이블 명세서, 요구사항 정의서, 잡리스트</br>
-https://javapotato.tistory.com/36
+https://javapotato.tistory.com/36</br>
+
+<h3>레이아웃 작업</h3>
+https://javapotato.tistory.com/40</br>
 
 **작업기간 :** 2023.02. ~ 2023.03()</br></br>
 **인력 구성 :** 1명(BE/FE 구현 및 모든 문서화 작업까지 전담하여 업무 수행)</br>
