@@ -23,4 +23,10 @@ public class MypageDAOImpl implements MypageDAO{
 	public int user_info(MypageDTO mypageDTO) throws Exception {
 		return sqlSession.update(namespace+".user_info", mypageDTO);
 	}
+
+	//회원탈퇴
+	@Override
+	public int remove_user(String u_id) throws Exception {
+		return sqlSession.delete(namespace+".remove_user", u_id);
+	}
 }

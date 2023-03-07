@@ -5,6 +5,15 @@
 <html lang="en">
 <%@include file="include/head.jsp"%>
 
+<script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+<script>
+	function remove_user() {
+		if(window.confirm("탈퇴하시겠습니까?")){
+			location.href="${contextPath}/remove_user";
+		}
+	}
+</script>
+
 <body>
 	<!-- Responsive navbar-->
 	<%@include file="include/navbar.jsp"%>
@@ -95,7 +104,7 @@
 					<div>
 						<button type="button" class="btn btn-dark" onclick="location.href='${contextPath}/'"> 취소 </button>
 						<button type="submit" class="btn btn-dark"> 수정 완료 </button>
-						<button type="button" class="btn btn-danger"> 회원 탈퇴 </button>
+						<button type="button" class="btn btn-danger" onclick="remove_user();"> 회원 탈퇴 </button>
 					</div><br/>
 										
 				</form>

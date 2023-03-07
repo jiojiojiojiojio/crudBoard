@@ -20,6 +20,12 @@ public class MypageServiceImpl implements MypageService{
 	public int user_info(MypageDTO mypageDTO) throws Exception {
 		return dao.user_info(mypageDTO);
 	}
+
+	//회원탈퇴
+	@Override
+	public int remove_user(String u_id) throws Exception {
+		return dao.remove_user(u_id);
+	}
 	
 	
 }

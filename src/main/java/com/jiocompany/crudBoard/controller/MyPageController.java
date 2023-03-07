@@ -60,6 +60,24 @@ public class MyPageController {
 		return "user_info";
 	}
 	
+	//회원 탈퇴
+	@RequestMapping(value="/remove_user", method = RequestMethod.GET)
+	public String remove_user(HttpSession session) throws Exception {
+		logger.info("회원 탈퇴");
+		
+		String u_id=(String)session.getAttribute("u_id");
+
+		int r = service.remove_user(u_id);
+		
+		//탈퇴 성공시
+		if(r>0) {
+			logger.info("탈퇴 성공");
+			return "redirect:/";
+		}
+		//탈퇴 실패시
+		return "redirect:/mypage?u_id="+u_id;
+	}
+	
 	//스크랩 리스트 조회
 	@RequestMapping(value="mypage/scrap_info", method = RequestMethod.GET)
 	public String scrap_info() {

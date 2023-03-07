@@ -18,6 +18,13 @@
 	where u_id=#{u_id}
 	</update>
 	
+	<!-- 회원탈퇴 -->
+	<delete id="remove_user" parameterType="String">
+	delete
+	from user
+	where u_id=#{u_id}
+	</delete>
+
 </mapper>
 
 

@@ -7,4 +7,7 @@ public interface MypageService {
 	
 	//마이페이지 내 정보 수정
 	public int user_info(MypageDTO mypageDTO) throws Exception;
+	
+	//회원 탈퇴
+	public int remove_user(String u_id) throws Exception;
 }
