@@ -1,5 +1,7 @@
 package com.jiocompany.crudBoard.controller;
 
+import java.util.List;
+
 import javax.servlet.ServletRequest;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -15,6 +17,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.jiocompany.crudBoard.board.BoardDTO;
+import com.jiocompany.crudBoard.mypage.B_scrapDTO;
 import com.jiocompany.crudBoard.mypage.MypageDTO;
 import com.jiocompany.crudBoard.mypage.MypageService;
 
@@ -80,9 +84,18 @@ public class MyPageController {
 	
 	//스크랩 리스트 조회
 	@RequestMapping(value="mypage/scrap_info", method = RequestMethod.GET)
-	public String scrap_info() {
+	public ModelAndView scrap_info(HttpSession session) throws Exception {
+		logger.info("스크랩한 글 리스트 조회");
 		
-		return "scrap_info";
+		ModelAndView mav = new ModelAndView();
+		String u_id=(String)session.getAttribute("u_id");
+		logger.info("세션에 저장된 uid>>>"+u_id);
+		
+		List<B_scrapDTO> scrap_info = service.scrap_info(u_id);
+		mav.addObject("scrap_info", scrap_info);
+		mav.setViewName("scrap_info");
+		
+		return mav;
 	}
 	
 	//스크랩 리스트 추가
@@ -94,9 +107,17 @@ public class MyPageController {
 	
 	//내가 작성한 글 조회
 	@RequestMapping(value="mypage/write_info", method = RequestMethod.GET)
-	public String write_info() {
+	public ModelAndView write_info(HttpSession session) throws Exception {
+		logger.info("내가 작성한 글 리스트 조회");
 		
-		return "write_info";
+		ModelAndView mav = new ModelAndView();
+		String u_id=(String)session.getAttribute("u_id");
+		
+		List<BoardDTO> write_info = service.write_info(u_id);
+		mav.addObject("write_info", write_info);
+		mav.setViewName("write_info");
+		
+		return mav;
 	}
 	
 	
