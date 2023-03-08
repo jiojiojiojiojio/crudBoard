@@ -46,24 +46,15 @@
 						</tr>
 					</thead>
 					<tbody>
-						<tr>
-							<th scope="row">1</th>
-							<td><a href="detail?b_no=${board.b_no}">제목입니다 넌 길이가 어케돼?</td>
-							<td>Otto</td>
-							<td>2023-02-07</td>
-							<td>7</td>
-						</tr>
-						<tr>
-							<th scope="row">2</th>
-							<td>Jacob</td>
-							<td>Thornton</td>
-							<td>@fat</td>
-						</tr>
-						<tr>
-							<th scope="row">3</th>
-							<td colspan="2">Larry the Bird</td>
-							<td>@twitter</td>
-						</tr>
+						<c:forEach var="write_info" items="${write_info }">
+							<tr>
+								<th scope="row">${write_info.b_no }</th>
+									<td><a href="${contextPath}/board/detail?b_no=${write_info.b_no}">${write_info.b_title }</td>
+									<td>${write_info.u_id }</td>
+									<td>${write_info.b_regdate }</td>
+									<td>${write_info.b_readcnt }</td>
+							</tr>
+						</c:forEach>
 					</tbody>
 				</table>
 			</div>
@@ -72,7 +63,7 @@
 			
 			</c:when>
 			
-						<c:when test="${sessionScope.u_id==null }">
+				<c:when test="${sessionScope.u_id==null }">
 				<div align="center">
 					<span><a style="font-size: 20pt;">회원 정보가 없습니다.</a></span><br />
 					<span><a style="font-size: 20pt;">로그인 또는 회원가입을하고 즐겨보세요^^</a></span><br/><br/>
