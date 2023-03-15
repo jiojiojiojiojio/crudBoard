@@ -84,9 +84,10 @@ Session에 ID를 저장시켜 로그인이 유지되는 동안 상단 네비게�
 
 <h3>3. 게시판</h3>
 <h3>3-1. 게시글 조회</h3>
-<img src="https://user-images.githubusercontent.com/112611440/222513686-0f8dcb78-1bb5-4591-a81d-ce8d4a12281d.gif">
+<img src="https://user-images.githubusercontent.com/112611440/225397149-74dad85c-a539-4e4a-892c-e658672fbcd9.gif">
 게시판 페이지에 들어가면 모든 게시글 리스트를 조회할 수 있다.</br>
 원하는 게시글을 클릭하면 해당 게시글을 조회할 수 있으며 조회수가 +1씩 증가한다.</br>
+게시글을 삭제하더라도 게시글의 순번이 밀리지 않고 정렬된다.</br>
 
 <h3>3-2. 게시글 작성</h3>
 <img src="https://user-images.githubusercontent.com/112611440/222517747-584885cb-4948-4aa4-a1f2-2cc31f912370.gif">
@@ -126,3 +127,7 @@ Session에 ID를 저장시켜 로그인이 유지되는 동안 상단 네비게�
 <img src="https://user-images.githubusercontent.com/112611440/222519744-216e43e0-0a33-4a2b-90c8-747ff25162dd.gif">
 원하는 회원 정보를 수정할 수 있다.</br>
 회원 정보를 성공적으로 수정하면, 수정된 정보를 즉시 보여준다.</br> 
+
+<h3>4.2 내가 작성한 글</h3>
+<img src="https://user-images.githubusercontent.com/112611440/225397452-0b1d9643-1058-415f-8559-9641713fc822.gif">
+해당 사용자가 작성한 글의 목록을 조회할 수 있다.</br>
