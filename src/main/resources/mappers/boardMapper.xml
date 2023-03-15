@@ -6,9 +6,9 @@
 	
 	<!-- 글 전체 목록 -->
 	<select id="board" resultType="BoardDTO" parameterType="BoardDTO">
-	select *
-	from board
-	where b_del = 0 
+	select @ROWNUM:=@ROWNUM+1 as rownum, b.*
+	from board b, (select @ROWNUM:=0) r
+	where b_del=0
 	order by b_no
 	</select>
 	

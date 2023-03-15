@@ -20,16 +20,25 @@
 	<div align="center">
 		<div class="col-lg-11">
 			<div align="right">
-			<c:choose>
-				<c:when test="${sessionScope.u_id==null }">
-				<button type="button" class="btn btn-dark"
-					onclick="location.href='${contextPath}/login'">로그인하고 글을 써보세요^^</button>
-				</c:when>
-				<c:when test="${sessionScope.u_id!=null }">
-				<button type="button" class="btn btn-dark"
-					onclick="location.href='${contextPath}/board/write'">글쓰기</button>
-				</c:when>
-			</c:choose>
+				<!-- 페이지네이션 start-->
+				<select id="dataPerPage">
+					<option value="10">10개씩보기</option>
+					<option value="15">15개씩보기</option>
+					<option value="20">20개씩보기</option>
+				</select>
+				<!-- 페이지네이션 end-->
+				
+				<c:choose>
+					<c:when test="${sessionScope.u_id==null }">
+						<button type="button" class="btn btn-dark"
+							onclick="location.href='${contextPath}/login'">로그인하고 글을
+							써보세요^^</button>
+					</c:when>
+					<c:when test="${sessionScope.u_id!=null }">
+						<button type="button" class="btn btn-dark"
+							onclick="location.href='${contextPath}/board/write'">글쓰기</button>
+					</c:when>
+				</c:choose>
 			</div>
 
 			<div align="center">
@@ -45,19 +54,40 @@
 					</thead>
 					<tbody>
 						<c:forEach var="board" items="${board }">
-						<tr>
-							<th scope="row">${board.b_no }</th>
-							<td><a href="board/detail?b_no=${board.b_no}">${board.b_title }</td>
-							<td>${board.u_id }</td>
-							<td>${board.b_regdate }</td>
-							<td>${board.b_readcnt }</td>
-						</tr>
+							<tr>
+								<th scope="row">${board.rownum }</th>
+								<td><a href="board/detail?b_no=${board.b_no}">${board.b_title }</td>
+								<td>${board.u_id }</td>
+								<td>${board.b_regdate }</td>
+								<td>${board.b_readcnt }</td>
+							</tr>
 						</c:forEach>
 					</tbody>
 				</table>
 
 			</div>
 		</div>
+	</div>
+		
+	<!-- 페이지네이션 -->
+	<div align="center">
+	
+		<!--  <nav aria-label="Page navigation example">
+			<ul class="pagination">
+				<li class="page-item"><a class="page-link" href="#">Previous</a></li>
+				<li class="page-item"><a class="page-link" href="#">1</a></li>
+				<li class="page-item"><a class="page-link" href="#">2</a></li>
+				<li class="page-item"><a class="page-link" href="#">3</a></li>
+				<li class="page-item"><a class="page-link" href="#">4</a></li>
+				<li class="page-item"><a class="page-link" href="#">5</a></li>
+				<li class="page-item"><a class="page-link" href="#">6</a></li>
+				<li class="page-item"><a class="page-link" href="#">7</a></li>
+				<li class="page-item"><a class="page-link" href="#">8</a></li>
+				<li class="page-item"><a class="page-link" href="#">9</a></li>
+				<li class="page-item"><a class="page-link" href="#">10</a></li>
+				<li class="page-item"><a class="page-link" href="#">Next</a></li>
+			</ul>
+		</nav>-->
 	</div>
 
 	<div align="center">
@@ -69,9 +99,7 @@
 					<option value="b_title">제목</option>
 					<option value="b_content">내용</option>
 					<option value="u_id">작성자</option>
-				</select>
-				
-				<input type="text" name="keyword" value=""></input>
+				</select> <input type="text" name="keyword" value=""></input>
 				<button type="submit" class="btn btn-secondary">검색</button>
 			</form>
 		</div>
