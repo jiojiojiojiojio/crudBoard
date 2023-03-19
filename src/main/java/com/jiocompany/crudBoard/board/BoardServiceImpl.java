@@ -82,5 +82,18 @@ public class BoardServiceImpl implements BoardService {
 	public List<BoardDTO> boardSearch(BoardDTO boardDTO) throws Exception {
 		return dao.boardSearch(boardDTO);
 	}
+
+	//게시글 페이징 처리
+	@Override
+	public List<BoardDTO> getBoardList(int startRow, int pageSize) throws Exception {
+		return dao.getBoardList(startRow, pageSize);
+	}
+
+	//게시글 총개수
+	@Override
+	public int getBoardCount() throws Exception {
+		return dao.getBoardCount();
+	}
+	
 	
 }

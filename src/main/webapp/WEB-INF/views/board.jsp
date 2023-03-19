@@ -42,7 +42,7 @@
 			</div>
 
 			<div align="center">
-				<table class="table">
+				<table class="table" id="table">
 					<thead>
 						<tr>
 							<th scope="col">번호</th>
@@ -64,31 +64,41 @@
 						</c:forEach>
 					</tbody>
 				</table>
-
 			</div>
 		</div>
 	</div>
-		
-	<!-- 페이지네이션 -->
+
+	<!-- 페이지네이션 start -->
 	<div align="center">
-	
-		<!--  <nav aria-label="Page navigation example">
-			<ul class="pagination">
-				<li class="page-item"><a class="page-link" href="#">Previous</a></li>
-				<li class="page-item"><a class="page-link" href="#">1</a></li>
-				<li class="page-item"><a class="page-link" href="#">2</a></li>
-				<li class="page-item"><a class="page-link" href="#">3</a></li>
-				<li class="page-item"><a class="page-link" href="#">4</a></li>
-				<li class="page-item"><a class="page-link" href="#">5</a></li>
-				<li class="page-item"><a class="page-link" href="#">6</a></li>
-				<li class="page-item"><a class="page-link" href="#">7</a></li>
-				<li class="page-item"><a class="page-link" href="#">8</a></li>
-				<li class="page-item"><a class="page-link" href="#">9</a></li>
-				<li class="page-item"><a class="page-link" href="#">10</a></li>
-				<li class="page-item"><a class="page-link" href="#">Next</a></li>
+		<nav aria-label="Page navigation example">
+			<ul class="pagination justify-content-center">
+
+				<c:if test="${currentPage > 1 }">
+					<li class="page-item"><a class="page-link"
+						href="${contextPath}/board?page=${currentPage-1}">Previous</a></li>
+				</c:if>
+
+				<c:forEach var="i" begin="1" end="${pageCount}">
+					<c:choose>
+						<c:when test="${i == currentPage }">
+							<li class="page-item"><a class="page-link">${i }</a></li>
+						</c:when>
+						<c:otherwise>
+							<li class="page-item"><a class="page-link"
+								href="${contextPath}/board?page=${i}">${i }</a></li>
+						</c:otherwise>
+					</c:choose>
+				</c:forEach>
+
+				<c:if test="${currentPage < pageCount }">
+					<li class="page-item"><a class="page-link"
+						href="${contextPath}/board?page=${currentPage+1}">Next</a></li>
+				</c:if>
+
 			</ul>
-		</nav>-->
+		</nav>
 	</div>
+	<!-- 페이지네이션 end -->
 
 	<div align="center">
 		<!-- 검색 시작 -->

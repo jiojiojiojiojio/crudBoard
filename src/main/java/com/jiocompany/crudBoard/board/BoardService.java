@@ -40,4 +40,9 @@ public interface BoardService {
 	//게시글 검색
 	public List<BoardDTO> boardSearch(BoardDTO boardDTO) throws Exception;
 	
+	//게시글 페이징 처리
+	public List<BoardDTO> getBoardList(int startRow, int pageSize) throws Exception;
+	
+	//게시글 총개수
+	public int getBoardCount() throws Exception;
 }
