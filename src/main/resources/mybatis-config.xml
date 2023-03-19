@@ -9,6 +9,9 @@
  		<typeAlias alias="BoardDTO" type="com.jiocompany.crudBoard.board.BoardDTO"/>
  		<typeAlias alias="B_replyDTO" type="com.jiocompany.crudBoard.board.B_replyDTO"/>
  		
+ 		
  		<typeAlias alias="MypageDTO" type="com.jiocompany.crudBoard.mypage.MypageDTO"/>
+ 		<typeAlias alias="B_scrapDTO" type="com.jiocompany.crudBoard.mypage.B_scrapDTO"/>
+ 		
  	</typeAliases>
 </configuration>

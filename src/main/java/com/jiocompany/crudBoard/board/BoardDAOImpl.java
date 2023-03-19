@@ -1,6 +1,8 @@
 package com.jiocompany.crudBoard.board;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -85,5 +87,23 @@ public class BoardDAOImpl implements BoardDAO {
 	public List<BoardDTO> boardSearch(BoardDTO boardDTO) throws Exception {
 		return sqlSession.selectList(namespace+".boardSearch", boardDTO);
 	}
+
+	//게시글 페이징 처리
+	@Override
+	public List<BoardDTO> getBoardList(int startRow, int pageSize) throws Exception {
+		Map<String, Object> map = new HashMap<>();
+		map.put("startRow", startRow);
+		map.put("pageSize", pageSize);
+		return sqlSession.selectList(namespace+".getBoardList", map);
+	}
+
+	//게시글 총개수
+	@Override
+	public int getBoardCount() throws Exception {
+		return sqlSession.selectOne(namespace+".getBoardCount");
+	}
 	
+	
+	
+
 }

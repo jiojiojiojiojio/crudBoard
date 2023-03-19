@@ -1,7 +1,9 @@
 package com.jiocompany.crudBoard.controller;
 
 import java.io.UnsupportedEncodingException;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -30,17 +32,22 @@ public class BoardController {
 	@Autowired
 	BoardService service;
 	
-	// 게시글 전체 리스트 조회
+	// 게시글 전체 리스트 조회&페이징 처리
 	@RequestMapping(value = "/board", method = RequestMethod.GET)
-	public ModelAndView board() throws Exception {
+	public String board(@RequestParam(required = false, defaultValue = "1")int page, Model model) throws Exception {
 		logger.info("게시판 리스트!!");
-		ModelAndView mav = new ModelAndView();
 		
-		List<BoardDTO> board = service.board();
-		mav.addObject("board", board);
-		mav.setViewName("board");
+		int totalCount=service.getBoardCount();
+		int pageSize=10;
+		int pageCount=(int)Math.ceil((double)totalCount/pageSize);
+		int startRow=(page-1)*pageSize;
 	
-		return mav;
+		List<BoardDTO> board = service.getBoardList(startRow, pageSize);
+		model.addAttribute("board", board);
+		model.addAttribute("currentPage", page);
+		model.addAttribute("pageCount", pageCount);
+		
+		return "board";
 	}
 
 	// 게시글 작성 이동 폼
@@ -177,6 +184,7 @@ public class BoardController {
 		
 		return mav;
 	}
+	
 	
 	
 }

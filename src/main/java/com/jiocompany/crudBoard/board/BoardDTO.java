@@ -18,5 +18,8 @@ public class BoardDTO {
 	//검색을 위한 DTO
 	private String type;
 	private String keyword;
-
+	
+	//페이징을 위한 DTO
+	private int offset;
+	private int limit;
 }
